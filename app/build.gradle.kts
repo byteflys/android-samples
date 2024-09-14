@@ -33,5 +33,7 @@ android {
 dependencies {
 
     // Commons Serial
-    api("io.github.hellogoogle2000:android-commons-ui:${property("commons.version")}")
+    implementation("io.github.hellogoogle2000:kotlin-commons:1.0.6")
+    implementation("io.github.hellogoogle2000:android-commons:1.0.6")
+    implementation("io.github.hellogoogle2000:android-commons-ui:1.0.7")
 }
