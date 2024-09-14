@@ -10,14 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="io.github.hellogoogle2000.android.commons.component.CommonApplication"
         android:icon="@drawable/ic"
         android:label="Samples"
         android:requestLegacyExternalStorage="true"
+        android:theme="@style/Theme.ByteFly.LaunchIcon"
         android:usesCleartextTraffic="true">
-
-        <meta-data
-            android:name="market"
-            android:value="${market}" />
 
         <activity
             android:name=".SplashActivity"
