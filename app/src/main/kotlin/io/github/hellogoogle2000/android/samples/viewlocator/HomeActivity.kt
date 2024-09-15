@@ -1,8 +1,8 @@
-package io.github.hellogoogle2000.android.samples
+package io.github.hellogoogle2000.android.samples.viewlocator
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import io.github.hellogoogle2000.android.commons.context.ActivityEx.setFullScreenStyle
+import io.github.hellogoogle2000.android.commons.context.ActivityX.fullscreen
 import io.github.hellogoogle2000.android.samples.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -10,7 +10,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setFullScreenStyle()
+        fullscreen()
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)

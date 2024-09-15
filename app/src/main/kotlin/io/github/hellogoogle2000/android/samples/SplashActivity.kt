@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import io.github.hellogoogle2000.android.commons.constant.Global
 import io.github.hellogoogle2000.android.commons.context.ActivityEx.setFullScreenStyle
+import io.github.hellogoogle2000.android.samples.viewlocator.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 

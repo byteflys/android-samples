@@ -1,4 +1,4 @@
-package io.github.hellogoogle2000.android.samples
+package io.github.hellogoogle2000.android.samples.viewlocator
 
 import android.app.Activity
 import android.view.Gravity
@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 import io.github.hellogoogle2000.android.commons.constant.Global
-import io.github.hellogoogle2000.android.commons.dialog.ToastEx
+import io.github.hellogoogle2000.android.commons.dialog.ToastX
+import io.github.hellogoogle2000.android.samples.R
 
 class HomePopup(val activity: Activity) : PopupWindow() {
 
@@ -21,7 +22,7 @@ class HomePopup(val activity: Activity) : PopupWindow() {
             val activity = activity
             val view = contentView
             val parentView = activity.findViewById<View>(android.R.id.content)
-            ToastEx.show("hello")
+            ToastX.show("hello")
         }
     }
 
