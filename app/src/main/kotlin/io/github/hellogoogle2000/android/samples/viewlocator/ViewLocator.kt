@@ -1,12 +1,12 @@
 package io.github.hellogoogle2000.android.samples.viewlocator
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
 import android.util.Size
 import android.view.View
 import android.view.WindowManager
-import io.github.hellogoogle2000.android.commons.context.ActivityX.getRootView
+import androidx.annotation.UiContext
+import io.github.hellogoogle2000.android.commons.context.ActivityX.getActivityRootView
 import io.github.hellogoogle2000.android.commons.ui.Location
 
 object ViewLocator {
@@ -18,10 +18,9 @@ object ViewLocator {
         return Size(rootView.measuredWidth, rootView.measuredHeight)
     }
 
+    @UiContext
     fun Context.getActivitySize(): Size {
-        val activity = this as? Activity
-        activity ?: throw RuntimeException("ui context required")
-        val activityRootView = this.getRootView()
+        val activityRootView = getActivityRootView()
         return Size(activityRootView.measuredWidth, activityRootView.measuredHeight)
     }
 
@@ -37,15 +36,26 @@ object ViewLocator {
         return Size(bounds.width(), bounds.height())
     }
 
-    // offset to parent window
+    // offset from current activity to application
+    @UiContext
+    fun View.getActivityOffset(): Location {
+        val windowManager = context.getSystemService(WindowManager::class.java)
+        val applicationBound = windowManager.currentWindowMetrics.bounds
+        val activityLocation = getActivityRootView().locationOnScreen()
+        val dx = activityLocation.x - applicationBound.left
+        val dy = activityLocation.y - applicationBound.top
+        return Location(dx = dx, dy = dy)
+    }
+
+    // offset from current window to parent window
+    @UiContext
     fun View.getWindowOffset(): Location {
-        val activity = context as? Activity
-        activity ?: throw RuntimeException("ui context required")
-        val activityRootView = getRootView()
+        val activityRootView = getActivityRootView()
         return getWindowOffset(activityRootView)
     }
 
     // must in same activity
+    @UiContext
     fun View.getWindowOffset(anotherView: View): Location {
         val thisLocation = rootView.locationInActivity()
         val anotherLocation = anotherView.locationInActivity()
@@ -64,14 +74,18 @@ object ViewLocator {
         return Location(out[0], out[1])
     }
 
+    @UiContext
     fun View.locationInActivity(): Location {
         val locationInWindow = locationInWindow()
         val windowOffset = getWindowOffset()
         return Location(locationInWindow.x + windowOffset.dx, locationInWindow.y + windowOffset.dy)
     }
 
+    @UiContext
     fun View.locationInApplication(): Location {
-        TODO()
+        val locationInActivity = locationInActivity()
+        val activityOffset = getActivityOffset()
+        return Location(locationInActivity.x + activityOffset.dx, locationInActivity.y + activityOffset.dy)
     }
 
     fun View.locationOnScreen(): Location {
@@ -87,7 +101,8 @@ object ViewLocator {
     }
 
     fun View.rectInParent(): Rect {
-        TODO()
+        val location = locationInParent()
+        return Rect(location.x, location.y, location.x + measuredWidth, location.y + measuredHeight)
     }
 
     fun View.rectInWindow(): Rect {
@@ -96,11 +111,16 @@ object ViewLocator {
         return rect
     }
 
+    @UiContext
     fun View.rectInActivity(): Rect {
-        TODO()
+        val location = locationInActivity()
+        return Rect(location.x, location.y, location.x + measuredWidth, location.y + measuredHeight)
     }
 
+    // pixel size may be scaled in multi-window mode
+    // right and bottom coordinates not equal to hardware ones in this situation
     fun View.rectOnScreen(): Rect {
-        TODO()
+        val location = locationOnScreen()
+        return Rect(location.x, location.y, location.x + measuredWidth, location.y + measuredHeight)
     }
 }
