@@ -15,11 +15,7 @@ class DialogActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        fullscreen()
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val flag = WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN
-        window.setFlags(flag, flag)
-        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        nonFullscreen()
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         binding.root.setBackgroundColor(Color.parseColor("#110000FF"))
@@ -36,6 +32,14 @@ class DialogActivity : AppCompatActivity() {
             lp.gravity = Gravity.CENTER
             window.attributes = lp
         }
+    }
+
+    private fun nonFullscreen() {
+        fullscreen()
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val flag = WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN
+        window.setFlags(flag, flag)
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     private fun initView() {
