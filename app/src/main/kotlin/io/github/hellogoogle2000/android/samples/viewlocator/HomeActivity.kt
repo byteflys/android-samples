@@ -1,5 +1,6 @@
 package io.github.hellogoogle2000.android.samples.viewlocator
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import io.github.hellogoogle2000.android.commons.context.ActivityX.fullscreen
@@ -19,7 +20,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initView() {
         binding.button.setOnClickListener {
-            HomePopup(this).show()
+            val intent = Intent(this, DialogActivity::class.java)
+            startActivity(intent)
         }
     }
 }

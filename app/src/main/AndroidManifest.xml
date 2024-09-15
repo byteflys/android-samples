@@ -26,5 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".viewlocator.HomeActivity" />
+        <activity
+            android:name=".viewlocator.DialogActivity"
+            android:theme="@style/Theme.TransparentActivity" />
     </application>
 </manifest>

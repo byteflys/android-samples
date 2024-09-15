@@ -9,13 +9,13 @@ import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import io.github.hellogoogle2000.android.commons.constant.Global
-import io.github.hellogoogle2000.android.commons.context.ActivityEx.setFullScreenStyle
+import io.github.hellogoogle2000.android.commons.context.ActivityX.fullscreen
 import io.github.hellogoogle2000.android.samples.viewlocator.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setFullScreenStyle()
+        fullscreen()
         super.onCreate(savedInstanceState)
         Global.application = application
     }
