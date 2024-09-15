@@ -18,6 +18,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-
+        binding.button.setOnClickListener {
+            HomePopup(this).show()
+        }
     }
 }
