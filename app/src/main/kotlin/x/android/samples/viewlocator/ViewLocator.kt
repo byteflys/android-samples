@@ -135,7 +135,6 @@ object ViewLocator {
     }
 
     // pixel size may be scaled in multi-window mode
-    // right and bottom not equal to hardware pixels in this situation
     fun View.rectOnScreen(): Rect {
         val location = locationOnScreen()
         return Rect(location.x, location.y, location.x + measuredWidth, location.y + measuredHeight)
