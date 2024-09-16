@@ -19,13 +19,13 @@ object ViewLocator {
     }
 
     @UiContext
-    fun Context.getContentSize(): Size {
+    fun Context.getActivityContentSize(): Size {
         val activityContentView = getActivityContentView()
         return Size(activityContentView.measuredWidth, activityContentView.measuredHeight)
     }
 
     @UiContext
-    fun Context.getActivitySize(): Size {
+    fun Context.getActivityWindowSize(): Size {
         val activityDecorView = getActivityDecorView()
         return Size(activityDecorView.measuredWidth, activityDecorView.measuredHeight)
     }
@@ -46,18 +46,14 @@ object ViewLocator {
     @UiContext
     fun View.getWindowOffset(): Location {
         val activityDecorView = getActivityDecorView()
-        val viewLocationOnScreen = locationOnScreen()
-        val activityLocationOnScreen = activityDecorView.locationOnScreen()
-        val dx = viewLocationOnScreen.x - activityLocationOnScreen.x
-        val dy = viewLocationOnScreen.y - activityLocationOnScreen.y
-        return Location(dx = dx, dy = dy)
+        return getWindowOffset(activityDecorView)
     }
 
     // must in same activity
     @UiContext
     fun View.getWindowOffset(anotherView: View): Location {
-        val thisLocation = rootView.locationInActivity()
-        val anotherLocation = anotherView.locationInActivity()
+        val thisLocation = getWindowDecorView().locationOnScreen()
+        val anotherLocation = anotherView.getWindowDecorView().locationOnScreen()
         val dx = thisLocation.x - anotherLocation.x
         val dy = thisLocation.y - anotherLocation.y
         return Location(dx = dx, dy = dy)
@@ -91,7 +87,6 @@ object ViewLocator {
         return Location(out[0], out[1])
     }
 
-    // TODO
     @UiContext
     fun View.locationInActivity(): Location {
         val locationInWindow = locationInWindow()
