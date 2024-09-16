@@ -11,6 +11,10 @@ import x.android.commons.context.ActivityX.getActivityDecorView
 import x.android.commons.context.ActivityX.getWindowDecorView
 import x.android.commons.ui.Location
 
+// android sdk only provides these info
+// location to parent, location in window, location on screen
+// view bounds, app bounds, screen bounds
+// other info can only be inferred from these
 object ViewLocator {
 
     fun View.getWindowSize(): Size {
