@@ -11,9 +11,6 @@ import io.github.hellogoogle2000.android.commons.ui.Location
 
 object ViewLocator {
 
-    private val defaultSize = Size(0, 0)
-    private val defaultRect = Rect()
-
     fun View.getWindowSize(): Size {
         return Size(rootView.measuredWidth, rootView.measuredHeight)
     }
