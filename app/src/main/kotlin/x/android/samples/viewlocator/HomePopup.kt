@@ -7,26 +7,26 @@ import android.view.View
 import android.widget.PopupWindow
 import com.blankj.utilcode.util.ActivityUtils
 import x.android.commons.constant.Global
-import x.android.commons.context.ActivityX.getActivityDecorView
-import x.android.commons.dialog.ToastX
+import x.android.commons.ui.ViewLocator.getActivityDecorView
+import x.android.commons.ui.ToastX
 import x.android.samples.R
-import x.android.samples.viewlocator.ViewLocator.getActivityContentSize
-import x.android.samples.viewlocator.ViewLocator.getActivityOffset
-import x.android.samples.viewlocator.ViewLocator.getActivityWindowSize
-import x.android.samples.viewlocator.ViewLocator.getApplicationSize
-import x.android.samples.viewlocator.ViewLocator.getContentOffset
-import x.android.samples.viewlocator.ViewLocator.getWindowOffset
-import x.android.samples.viewlocator.ViewLocator.getWindowSize
-import x.android.samples.viewlocator.ViewLocator.locationInActivity
-import x.android.samples.viewlocator.ViewLocator.locationInApplication
-import x.android.samples.viewlocator.ViewLocator.locationInParent
-import x.android.samples.viewlocator.ViewLocator.locationInWindow
-import x.android.samples.viewlocator.ViewLocator.locationOnScreen
-import x.android.samples.viewlocator.ViewLocator.rectInActivity
-import x.android.samples.viewlocator.ViewLocator.rectInParent
-import x.android.samples.viewlocator.ViewLocator.rectInWindow
-import x.android.samples.viewlocator.ViewLocator.rectOnScreen
-import x.android.samples.viewlocator.ViewLocator.visibleRectToSelf
+import x.android.commons.ui.ViewLocator.getActivityContentSize
+import x.android.commons.ui.ViewLocator.getActivityOffset
+import x.android.commons.ui.ViewLocator.getActivityWindowSize
+import x.android.commons.ui.ViewLocator.getApplicationSize
+import x.android.commons.ui.ViewLocator.getContentOffset
+import x.android.commons.ui.ViewLocator.getWindowOffset
+import x.android.commons.ui.ViewLocator.getWindowSize
+import x.android.commons.ui.ViewLocator.locationInActivity
+import x.android.commons.ui.ViewLocator.locationInApplication
+import x.android.commons.ui.ViewLocator.locationInParent
+import x.android.commons.ui.ViewLocator.locationInWindow
+import x.android.commons.ui.ViewLocator.locationOnScreen
+import x.android.commons.ui.ViewLocator.rectInActivity
+import x.android.commons.ui.ViewLocator.rectInParent
+import x.android.commons.ui.ViewLocator.rectInWindow
+import x.android.commons.ui.ViewLocator.rectOnScreen
+import x.android.commons.ui.ViewLocator.visibleRectToSelf
 
 class HomePopup(val activity: Activity) : PopupWindow() {
 
