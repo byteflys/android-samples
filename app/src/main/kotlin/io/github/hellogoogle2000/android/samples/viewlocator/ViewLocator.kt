@@ -48,7 +48,11 @@ object ViewLocator {
     @UiContext
     fun View.getWindowOffset(): Location {
         val activityRootView = getActivityRootView()
-        return getWindowOffset(activityRootView)
+        val viewLocationOnScreen = locationOnScreen()
+        val activityLocationOnScreen = activityRootView.locationOnScreen()
+        val dx = viewLocationOnScreen.x - activityLocationOnScreen.x
+        val dy = viewLocationOnScreen.y - activityLocationOnScreen.y
+        return Location(dx = dx, dy = dy)
     }
 
     // must in same activity

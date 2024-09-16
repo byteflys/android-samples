@@ -18,10 +18,10 @@ class HomePopup(val activity: Activity) : PopupWindow() {
         contentView = LayoutInflater.from(activity).inflate(R.layout.popup_home, null)
         val button = contentView.findViewById<View>(R.id.button)
         button.setOnClickListener {
-            val context = Global.application
+            val app = Global.application
             val activity = activity
-            val view = contentView
-            val parentView = activity.findViewById<View>(android.R.id.content)
+            val windowView = contentView
+            val activityView = activity.findViewById<View>(android.R.id.content)
             ToastX.show("hello")
         }
     }
