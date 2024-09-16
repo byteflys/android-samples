@@ -16,7 +16,6 @@ class HomePopup(val activity: Activity) : PopupWindow() {
     init {
         width = 400
         height = 400
-        setBackgroundDrawable(activity.getDrawable(x.android.commons.R.color.black_percent_15))
         contentView = LayoutInflater.from(activity).inflate(R.layout.popup_home, null)
         val button = contentView.findViewById<View>(R.id.button)
         button.setOnClickListener {
