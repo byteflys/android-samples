@@ -1,4 +1,4 @@
-package io.github.hellogoogle2000.android.samples
+package x.android.samples
 
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import io.github.hellogoogle2000.android.commons.constant.Global
 import io.github.hellogoogle2000.android.commons.context.ActivityX.fullscreen
-import io.github.hellogoogle2000.android.samples.viewlocator.HomeActivity
+import x.android.samples.viewlocator.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 

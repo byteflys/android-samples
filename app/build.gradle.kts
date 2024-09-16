@@ -7,7 +7,7 @@ android {
 
     compileSdk = 34
     defaultConfig {
-        namespace = "io.github.hellogoogle2000.android.samples"
+        namespace = "x.android.samples"
         minSdk = 30
         targetSdk = 34
     }

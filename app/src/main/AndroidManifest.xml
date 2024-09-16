@@ -18,16 +18,16 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".SplashActivity"
+            android:name="x.android.samples.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".viewlocator.HomeActivity" />
+        <activity android:name="x.android.samples.viewlocator.HomeActivity" />
         <activity
-            android:name=".viewlocator.DialogActivity"
+            android:name="x.android.samples.viewlocator.DialogActivity"
             android:theme="@style/Theme.TransparentActivity" />
     </application>
 </manifest>

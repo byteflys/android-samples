@@ -1,4 +1,4 @@
-package io.github.hellogoogle2000.android.samples.viewlocator
+package x.android.samples.viewlocator
 
 import android.content.Intent
 import android.os.Bundle
