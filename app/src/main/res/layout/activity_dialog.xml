@@ -12,6 +12,6 @@
         android:layout_gravity="right|bottom"
         android:paddingHorizontal="50dp"
         android:paddingVertical="10dp"
-        android:text="HomeActivity"
+        android:text="DialogActivity"
         android:textAllCaps="false" />
 </FrameLayout>
