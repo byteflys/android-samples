@@ -34,6 +34,6 @@ dependencies {
 
     // Commons Serial
     implementation("io.github.hellogoogle2000:kotlin-commons:1.0.6")
-    implementation("io.github.hellogoogle2000:android-commons:1.0.15")
+    implementation("io.github.hellogoogle2000:android-commons:1.0.16")
     implementation("io.github.hellogoogle2000:android-commons-ui:1.0.9")
 }

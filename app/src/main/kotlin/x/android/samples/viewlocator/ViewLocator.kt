@@ -6,19 +6,28 @@ import android.util.Size
 import android.view.View
 import android.view.WindowManager
 import androidx.annotation.UiContext
-import x.android.commons.context.ActivityX.getActivityRootView
+import x.android.commons.context.ActivityX.getActivityContentView
+import x.android.commons.context.ActivityX.getActivityDecorView
+import x.android.commons.context.ActivityX.getWindowDecorView
 import x.android.commons.ui.Location
 
 object ViewLocator {
 
     fun View.getWindowSize(): Size {
-        return Size(rootView.measuredWidth, rootView.measuredHeight)
+        val decorView = getWindowDecorView()
+        return Size(decorView.measuredWidth, decorView.measuredHeight)
+    }
+
+    @UiContext
+    fun Context.getContentSize(): Size {
+        val activityContentView = getActivityContentView()
+        return Size(activityContentView.measuredWidth, activityContentView.measuredHeight)
     }
 
     @UiContext
     fun Context.getActivitySize(): Size {
-        val activityRootView = getActivityRootView()
-        return Size(activityRootView.measuredWidth, activityRootView.measuredHeight)
+        val activityDecorView = getActivityDecorView()
+        return Size(activityDecorView.measuredWidth, activityDecorView.measuredHeight)
     }
 
     fun Context.getApplicationSize(): Size {
@@ -33,23 +42,12 @@ object ViewLocator {
         return Size(bounds.width(), bounds.height())
     }
 
-    // offset from current activity to application
-    @UiContext
-    fun View.getActivityOffset(): Location {
-        val windowManager = context.getSystemService(WindowManager::class.java)
-        val applicationBound = windowManager.currentWindowMetrics.bounds
-        val activityLocation = getActivityRootView().locationOnScreen()
-        val dx = activityLocation.x - applicationBound.left
-        val dy = activityLocation.y - applicationBound.top
-        return Location(dx = dx, dy = dy)
-    }
-
     // offset from current window to parent window
     @UiContext
     fun View.getWindowOffset(): Location {
-        val activityRootView = getActivityRootView()
+        val activityDecorView = getActivityDecorView()
         val viewLocationOnScreen = locationOnScreen()
-        val activityLocationOnScreen = activityRootView.locationOnScreen()
+        val activityLocationOnScreen = activityDecorView.locationOnScreen()
         val dx = viewLocationOnScreen.x - activityLocationOnScreen.x
         val dy = viewLocationOnScreen.y - activityLocationOnScreen.y
         return Location(dx = dx, dy = dy)
@@ -65,6 +63,24 @@ object ViewLocator {
         return Location(dx = dx, dy = dy)
     }
 
+    // offset from activity content to activity window
+    @UiContext
+    fun Context.getContentOffset(): Location {
+        val activityContentView = getActivityContentView()
+        return activityContentView.locationInWindow()
+    }
+
+    // offset from current activity to application
+    @UiContext
+    fun Context.getActivityOffset(): Location {
+        val windowManager = getSystemService(WindowManager::class.java)
+        val applicationBound = windowManager.currentWindowMetrics.bounds
+        val activityLocation = getActivityDecorView().locationOnScreen()
+        val dx = activityLocation.x - applicationBound.left
+        val dy = activityLocation.y - applicationBound.top
+        return Location(dx = dx, dy = dy)
+    }
+
     fun View.locationInParent(): Location {
         return Location(left, top)
     }
@@ -75,6 +91,7 @@ object ViewLocator {
         return Location(out[0], out[1])
     }
 
+    // TODO
     @UiContext
     fun View.locationInActivity(): Location {
         val locationInWindow = locationInWindow()
@@ -85,7 +102,7 @@ object ViewLocator {
     @UiContext
     fun View.locationInApplication(): Location {
         val locationInActivity = locationInActivity()
-        val activityOffset = getActivityOffset()
+        val activityOffset = context.getActivityOffset()
         return Location(locationInActivity.x + activityOffset.dx, locationInActivity.y + activityOffset.dy)
     }
 
