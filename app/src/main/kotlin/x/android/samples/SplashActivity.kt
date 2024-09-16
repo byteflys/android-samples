@@ -8,14 +8,14 @@ import android.os.Environment
 import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import io.github.hellogoogle2000.android.commons.constant.Global
-import io.github.hellogoogle2000.android.commons.context.ActivityX.fullscreen
+import x.android.commons.constant.Global
+import x.android.commons.context.ActivityX.immersive
 import x.android.samples.viewlocator.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        fullscreen()
+        immersive()
         super.onCreate(savedInstanceState)
         Global.application = application
     }

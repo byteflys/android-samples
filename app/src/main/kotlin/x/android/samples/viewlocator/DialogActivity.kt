@@ -5,7 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
-import io.github.hellogoogle2000.android.samples.databinding.ActivityDialogBinding
+import x.android.samples.databinding.ActivityDialogBinding
 
 class DialogActivity : AppCompatActivity() {
 

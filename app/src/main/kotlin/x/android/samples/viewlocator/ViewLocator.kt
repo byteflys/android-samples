@@ -6,8 +6,8 @@ import android.util.Size
 import android.view.View
 import android.view.WindowManager
 import androidx.annotation.UiContext
-import io.github.hellogoogle2000.android.commons.context.ActivityX.getActivityRootView
-import io.github.hellogoogle2000.android.commons.ui.Location
+import x.android.commons.context.ActivityX.getActivityRootView
+import x.android.commons.ui.Location
 
 object ViewLocator {
 
