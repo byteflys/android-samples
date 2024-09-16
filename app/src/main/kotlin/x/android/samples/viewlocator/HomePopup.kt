@@ -25,8 +25,8 @@ class HomePopup(val activity: Activity) : PopupWindow() {
             val windowView = contentView
             val activityView = activity.findViewById<View>(android.R.id.content)
             val homeActivityView = homeActivity.findViewById<View>(android.R.id.content)
-            val offset1 = activityView.getActivityOffset()
-            val offset2 = homeActivityView.getActivityOffset()
+            val offset1 = activityView.context.getActivityOffset()
+            val offset2 = homeActivityView.context.getActivityOffset()
             ToastX.show("hello")
         }
     }
