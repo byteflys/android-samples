@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import x.android.commons.constant.Global
 import x.android.commons.context.ActivityX.immersive
-import x.android.samples.viewlocator.HomeActivity
+import x.android.samples.popuplocator.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 

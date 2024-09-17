@@ -1,10 +1,11 @@
-package x.android.samples.viewlocator
+package x.android.samples.popuplocator
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import x.android.commons.context.ActivityX.immersive
+import x.android.commons.ui.DockPoint
 import x.android.samples.databinding.ActivityHomeBinding
+import x.android.samples.popuplocator.PopupLocator.show
 
 class HomeActivity : AppCompatActivity() {
 
@@ -20,8 +21,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initView() {
         binding.button.setOnClickListener {
-            val intent = Intent(this, DialogActivity::class.java)
-            startActivity(intent)
+            val popup = HomePopup(this)
+            popup.show(binding.button, DockPoint.BOTTOM_CENTER, DockPoint.TOP_CENTER)
         }
     }
 }

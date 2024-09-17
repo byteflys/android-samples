@@ -1,4 +1,4 @@
-package x.android.samples.viewlocator
+package x.android.samples.popuplocator
 
 import android.content.Context
 import android.graphics.Rect
