@@ -6,6 +6,18 @@
     android:background="#2200FF00"
     android:orientation="vertical">
 
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#000000"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="10dp"
+        android:text="HomeActivity"
+        android:textAllCaps="false" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

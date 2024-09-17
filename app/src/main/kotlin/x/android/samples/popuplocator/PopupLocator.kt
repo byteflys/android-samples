@@ -14,26 +14,26 @@ import x.android.commons.ui.WindowLocation
 
 object PopupLocator {
 
-    fun <T : PopupWindow> T.show(
+    fun <T : PopupWindow> T.getWindowLocation(
         anchorView: View,
         dstDockPoint: DockPoint = DockPoint.BOTTOM_CENTER,
         srcDockPoint: DockPoint = DockPoint.TOP_CENTER,
         dx: Int = 0,
         dy: Int = 0,
         windowContext: Context = ActivityX.getFrontActivity()
-    ) = apply {
+    ): WindowLocation {
         val rectInActivity = anchorView.rectInActivity()
-        show(rectInActivity, dstDockPoint, srcDockPoint, dx, dy, windowContext)
+        return getWindowLocation(rectInActivity, dstDockPoint, srcDockPoint, dx, dy, windowContext)
     }
 
-    fun <T : PopupWindow> T.show(
+    fun <T : PopupWindow> T.getWindowLocation(
         dstRectInWindow: Rect = Rect(),
         dstDockPoint: DockPoint = DockPoint.BOTTOM_CENTER,
         srcDockPoint: DockPoint = DockPoint.TOP_CENTER,
         dx: Int = 0,
         dy: Int = 0,
         windowContext: Context = ActivityX.getFrontActivity()
-    ) = apply {
+    ): WindowLocation {
         val parent = windowContext.getActivityDecorView()
         val parentRect = parent.rectInWindow()
         val gravityX = getGravityX(srcDockPoint)
@@ -42,12 +42,12 @@ object PopupLocator {
         val x = getOffsetX(dstRectInWindow, parentRect, dstDockPoint, gravityX)
         val y = getOffsetY(dstRectInWindow, parentRect, dstDockPoint, gravityY)
         val windowLocation = WindowLocation(x, y, dx, dy, gravity)
-        show(windowLocation, windowContext)
+        return windowLocation
     }
 
     fun <T : PopupWindow> T.show(
         windowLocation: WindowLocation,
-        windowContext: Context
+        windowContext: Context = ActivityX.getFrontActivity()
     ) = apply {
         val parent = windowContext.getActivityDecorView()
         showAtLocation(
@@ -55,6 +55,18 @@ object PopupLocator {
             windowLocation.gravity,
             windowLocation.x + windowLocation.dx,
             windowLocation.y + windowLocation.dy
+        )
+    }
+
+    fun <T : PopupWindow> T.update(
+        windowLocation: WindowLocation,
+        width: Int = getWidth(),
+        height: Int = getHeight()
+    ) = apply {
+        update(
+            windowLocation.x + windowLocation.dx,
+            windowLocation.y + windowLocation.dy,
+            width, height
         )
     }
 
