@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
     private fun initView() {
         binding.button.setOnClickListener {
             val popup = HomePopup(this)
-            popup.show(binding.button, DockPoint.BOTTOM_CENTER, DockPoint.TOP_CENTER)
+            popup.show(binding.button, DockPoint.BOTTOM_RIGHT, DockPoint.TOP_LEFT)
         }
     }
 }
