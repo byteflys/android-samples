@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         immersive()
         super.onCreate(savedInstanceState)
-        Global.application = application
+        Global.app = application
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
