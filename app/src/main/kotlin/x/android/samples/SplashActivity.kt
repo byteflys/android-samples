@@ -3,14 +3,17 @@ package x.android.samples
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import x.android.commons.constant.Global
 import x.android.commons.context.ActivityX.immersive
 import x.android.samples.popuplocator.HomeActivity
 
+@RequiresApi(Build.VERSION_CODES.R)
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
