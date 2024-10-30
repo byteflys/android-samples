@@ -9,7 +9,7 @@ import android.os.Environment
 import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import x.android.commons.constant.Global
+import x.android.commons.context.Global
 import x.android.commons.context.ActivityX.immersive
 import x.android.samples.popuplocator.HomeActivity
 
