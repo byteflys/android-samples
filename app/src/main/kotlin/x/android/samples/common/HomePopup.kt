@@ -1,4 +1,4 @@
-package x.android.samples.popuplocator
+package x.android.samples.common
 
 import android.app.Activity
 import android.view.LayoutInflater

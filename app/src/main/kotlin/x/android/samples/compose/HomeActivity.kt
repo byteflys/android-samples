@@ -1,4 +1,4 @@
-package x.android.samples.popuplocator
+package x.android.samples.compose
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

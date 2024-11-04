@@ -10,7 +10,7 @@ import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import x.android.commons.context.Global
 import x.android.commons.context.ActivityX.immersive
-import x.android.samples.popuplocator.HomeActivity
+import x.android.samples.compose.HomeActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

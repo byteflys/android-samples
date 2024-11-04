@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="x.android.samples.popuplocator.HomeActivity" />
+        <activity android:name="x.android.samples.compose.HomeActivity" />
         <activity
-            android:name="x.android.samples.popuplocator.DialogActivity"
+            android:name="x.android.samples.compose.DialogActivity"
             android:theme="@style/Theme.TransparentActivity" />
     </application>
 </manifest>
