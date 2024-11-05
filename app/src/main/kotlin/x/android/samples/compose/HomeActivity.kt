@@ -19,7 +19,7 @@ class HomeActivity : AppCompatActivity() {
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFCDDC39)
+@Preview(showBackground = true, backgroundColor = 0xFFCDDC39, showSystemUi = false)
 @Composable
 fun RootView() {
     Text("hello")

@@ -34,4 +34,7 @@ dependencies {
 
     // Commons Serial
     api("io.github.hellogoogle2000:android-commons:1.0.28")
+    debugApi("androidx.compose.ui:ui-tooling:1.7.5")
+    debugApi("androidx.compose.ui:ui-tooling-preview:1.7.5")
+    debugApi("androidx.compose.ui:ui-tooling-preview-android:1.7.5")
 }
