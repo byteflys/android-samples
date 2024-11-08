@@ -10,6 +10,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         immersive()
         super.onCreate(savedInstanceState)
-        setContent { CompositionLocalView(true) }
+        setContent { CompositionLocalView() }
     }
 }

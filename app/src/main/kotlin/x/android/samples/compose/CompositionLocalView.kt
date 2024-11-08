@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-var isStatic = false
+var isStatic = true
 var compositionLocalName = ""
 val currentLocalColor = if (isStatic) {
     compositionLocalName = "Static Scenario"
@@ -34,11 +34,11 @@ val currentLocalColor = if (isStatic) {
     compositionLocalOf { Color.Black }
 }
 
-var recomposeFlag = "Init"
+var recomposeFlag = "Created"
 
 @Preview
 @Composable
-fun CompositionLocalView(isStatic: Boolean = false) {
+fun CompositionLocalView() {
     var color by remember { mutableStateOf(Color.Green) }
     Box(
         modifier = Modifier.fillMaxSize(),
