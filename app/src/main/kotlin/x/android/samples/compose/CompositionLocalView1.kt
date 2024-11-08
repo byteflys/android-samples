@@ -38,7 +38,7 @@ var recomposeFlag = "Created"
 
 @Preview
 @Composable
-fun CompositionLocalView() {
+fun CompositionLocalView1() {
     var color by remember { mutableStateOf(Color.Green) }
     Box(
         modifier = Modifier.fillMaxSize(),
