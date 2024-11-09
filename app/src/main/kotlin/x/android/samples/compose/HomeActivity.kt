@@ -11,7 +11,7 @@ class HomeActivity : AppCompatActivity() {
         immersive()
         super.onCreate(savedInstanceState)
         setContent {
-            CompositionLocalView2()
+            AnnotatedTextView()
         }
     }
 }
