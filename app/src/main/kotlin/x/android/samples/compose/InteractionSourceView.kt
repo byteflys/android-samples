@@ -17,11 +17,13 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun InteractionSourceView() {
+fun InteractionSourceView1() {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val width = if (isPressed) 200.dp else 100.dp
     Button(onClick = {}, interactionSource = interactionSource, modifier = Modifier.width(width).height(50.dp)) {
-        Text("Hello", Modifier.wrapContentSize(Alignment.Center))
+        if (isPressed) {
+            Text("Hello", Modifier.wrapContentSize(Alignment.Center))
+        }
     }
 }
