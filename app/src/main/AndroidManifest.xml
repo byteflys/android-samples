@@ -14,7 +14,7 @@
         android:icon="@drawable/ic"
         android:label="Samples"
         android:requestLegacyExternalStorage="true"
-        android:theme="@style/Theme.ByteFly.LaunchIcon"
+        android:theme="@style/Theme.Material3.Light.NoActionBar"
         android:usesCleartextTraffic="true">
 
         <activity
@@ -26,8 +26,5 @@
             </intent-filter>
         </activity>
         <activity android:name="x.android.samples.compose.HomeActivity" />
-        <activity
-            android:name="x.android.samples.compose.DialogActivity"
-            android:theme="@style/Theme.TransparentActivity" />
     </application>
 </manifest>

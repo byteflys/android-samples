@@ -12,7 +12,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 
 @Preview
 @Composable
-fun AnnotatedTextView() {
+fun AnnotatedStringView() {
     Text(text = buildAnnotatedString {
         pushStyle(ParagraphStyle(lineHeight = TextUnit(2.0f, TextUnitType.Em)))
         pushStyle(SpanStyle(color = Color.Red))
