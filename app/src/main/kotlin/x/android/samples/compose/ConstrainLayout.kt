@@ -14,12 +14,12 @@ import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 
-typealias ConstrainBlock = ConstrainScope.() -> Unit
+private typealias ConstrainBlock = ConstrainScope.() -> Unit
 
-val ConstrainScope.left get() = run { absoluteLeft }
-val ConstrainScope.right get() = run { absoluteRight }
-val ConstrainedLayoutReference.left get() = run { absoluteLeft }
-val ConstrainedLayoutReference.right get() = run { absoluteRight }
+private val ConstrainScope.left get() = run { absoluteLeft }
+private val ConstrainScope.right get() = run { absoluteRight }
+private val ConstrainedLayoutReference.left get() = run { absoluteLeft }
+private val ConstrainedLayoutReference.right get() = run { absoluteRight }
 
 @Composable
 private fun ConstraintLayoutCompose(modifier: Modifier) {
