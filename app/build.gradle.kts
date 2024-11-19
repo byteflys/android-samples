@@ -30,5 +30,5 @@ android {
 dependencies {
 
     // Commons Serial
-    api("io.github.hellogoogle2000:android-commons:1.0.35")
+    api("io.github.hellogoogle2000:android-commons:1.0.36")
 }
