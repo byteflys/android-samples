@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FixedThreshold
+import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material.swipeable
 import androidx.compose.runtime.Composable
@@ -24,16 +25,17 @@ import kotlin.math.roundToInt
 @OptIn(ExperimentalMaterialApi::class)
 private fun Swipe() {
     val swipeState = rememberSwipeableState(0f)
-    val endPosition = with(LocalDensity.current) { 50.dp.toPx() }
-    val anchors = mapOf(0f to 0f, endPosition / 2 to 0.5f, endPosition to 1f)
+    val endPosition = with(LocalDensity.current) { 80.dp.toPx() }
+    val anchors = mapOf(0f to 0f, endPosition to 1f)
     Box(Modifier.width(200.dp).swipeable(
         state = swipeState,
         anchors = anchors,
         orientation = Orientation.Horizontal,
-        thresholds = { from, to -> FixedThreshold(25.dp) }
+        thresholds = { from, to -> FractionalThreshold(0.5f) }
     ).background(Color.Yellow)) {
         val gradient = Brush.horizontalGradient(colors = listOf(Color.Black, Color.White, Color.Black))
         Box(Modifier.size(100.dp).offset {
+            println(swipeState.currentValue)
             IntOffset(swipeState.offset.value.roundToInt(), 0)
         }.background(gradient))
     }
