@@ -40,6 +40,6 @@ private fun MultiFingerTouch() {
 
 @Preview
 @Composable
-fun Compose22() {
+fun Compose21() {
     MultiFingerTouch()
 }

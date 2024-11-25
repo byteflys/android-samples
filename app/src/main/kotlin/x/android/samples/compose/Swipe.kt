@@ -42,6 +42,6 @@ private fun Swipe() {
 
 @Preview
 @Composable
-fun Compose21() {
+fun Compose23() {
     Swipe()
 }
