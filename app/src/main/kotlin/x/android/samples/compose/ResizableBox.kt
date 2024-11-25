@@ -13,18 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.geometry.toRect
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
@@ -32,24 +27,31 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 
+private val parentWidth = 500.dp
+private val parentHeight = 200.dp
+private val contentWidth = 400.dp
+private val contentHeight = 400.dp
+
+class RectOutlineShape(val left: Float, val top: Float, val width: Float, val height: Float) : Shape {
+    override fun createOutline(
+        size: Size, layoutDirection: LayoutDirection, density: Density
+    ) = Outline.Rectangle(Rect(left, top, left + width, top + height))
+}
+
 @Composable
 private fun ResizableBox() {
-    val contentHeightInDp = 400.dp
-    val contentHeight = with(LocalDensity.current) { contentHeightInDp.toPx() }
-    val gradient = Brush.linearGradient(0f to Color.Black, 0.5f to Color.Red, 1f to Color.Black, start = Offset(0f, 0f), end = Offset(0f, contentHeight))
+    val contentHeightPx = with(LocalDensity.current) { contentHeight.toPx() }
+    val gradient = Brush.linearGradient(0f to Color.Black, 0.5f to Color.Red, 1f to Color.Black, start = Offset(0f, 0f), end = Offset(0f, contentHeightPx))
     val scrollState = rememberScrollState()
-    // verticalScroll(scrollState)
-    // scrollable(scrollState, Orientation.Vertical)
-    val outline = Outline.Rectangle(Rect(100f, 100f, 200f, 200f))
-    val shape = object : Shape {
-        override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density) = outline
+    val clipOutline = with(LocalDensity.current) {
+        RectOutlineShape(0f, contentHeight.minus(parentHeight).toPx() / 2, contentWidth.toPx(), parentHeight.toPx())
     }
-    Box(Modifier.background(Color.Yellow).width(500.dp).height(200.dp).scrollable(scrollState, Orientation.Vertical)) {
+    Box(Modifier.background(Color.Yellow).width(parentWidth).height(parentHeight).scrollable(scrollState, Orientation.Vertical)) {
         Box(
-            Modifier.width(400.dp).height(contentHeightInDp).requiredSize(400.dp, 400.dp).clip(shape).align(Alignment.Center).offset {
-                println(scrollState.value)
-                IntOffset(0, scrollState.value)
-            }.background(gradient)
+            Modifier.align(Alignment.Center).requiredSize(contentWidth, contentHeight).clip(clipOutline)
+                .offset { IntOffset(0, clipOutline.top.toInt()) }
+                .offset { IntOffset(0, -scrollState.value) }
+                .background(gradient)
         )
     }
 }
