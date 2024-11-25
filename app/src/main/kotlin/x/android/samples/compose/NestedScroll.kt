@@ -1,6 +1,5 @@
 package x.android.samples.compose
 
-import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -41,17 +40,16 @@ private fun NestedScroll() {
     val nestedScrollConnection = remember {
         object : NestedScrollConnection {
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                val delta = -available.y
-                println(delta)
                 coroutineScope.launch {
-                    if (scrollState1.isScrollInProgress.not()) {
-                        scrollState1.scrollBy(delta)
-                    }
-                    if (scrollState2.isScrollInProgress.not()) {
-                        scrollState2.scrollBy(delta)
+                    if (scrollState1.isScrollInProgress) {
+                        val target = scrollState1.value.toFloat() / scrollState1.maxValue * scrollState2.maxValue
+                        scrollState2.scrollTo(target.toInt())
+                    } else {
+                        val target = scrollState2.value.toFloat() / scrollState2.maxValue * scrollState1.maxValue
+                        scrollState1.scrollTo(target.toInt())
                     }
                 }
-                return Offset(0f, delta)
+                return Offset.Zero
             }
         }
     }
