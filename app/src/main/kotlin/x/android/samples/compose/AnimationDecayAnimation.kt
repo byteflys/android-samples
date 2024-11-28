@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 private fun BasicDecayAnimation() {
-    var animateDp by remember { mutableStateOf(200.dp) }
+    var animateDp by remember { mutableStateOf(100.dp) }
     val animation = remember {
         // frictionMultiplier : deceleration multiplier, when value become larger, animation stop faster
         // initialValue : initial animated value
@@ -43,11 +43,11 @@ private fun BasicDecayAnimation() {
         while (true) {
             println("running")
             val duration = withFrameNanos { it } - startTime
-            animateDp = animation.getValueFromNanos(duration).dp
-            println(animateDp)
-            if (animateDp <= 100.dp) {
+            val value = animation.getValueFromNanos(duration).dp
+            if (value == animateDp) {
                 break
             }
+            animateDp = value
         }
     }
 
