@@ -42,14 +42,13 @@ private fun Modifier.swipeToDismiss(onDismiss: () -> Unit): Modifier = composed 
                 val pointerId = awaitPointerEventScope { awaitFirstDown().id }
                 val velocityTracker = VelocityTracker()
                 offsetXAnimatable.stop()
-                println("awaitPointerEventScope start")
                 awaitPointerEventScope {
+                    // suspend until pointer release
                     horizontalDrag(pointerId) { change ->
                         velocityTracker.addPosition(change.uptimeMillis, change.position)
                         launch { offsetXAnimatable.snapTo(offsetXAnimatable.value + change.positionChange().x) }
                     }
                 }
-                println("awaitPointerEventScope end")
                 val velocity = velocityTracker.calculateVelocity().x
                 val targetOffsetX = decay.calculateTargetValue(offsetXAnimatable.value, velocity)
                 offsetXAnimatable.updateBounds(-size.width.toFloat(), size.width.toFloat())
