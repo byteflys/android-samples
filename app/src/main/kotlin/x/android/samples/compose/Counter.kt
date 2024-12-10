@@ -1,23 +1,29 @@
 package x.android.samples.compose
 
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 private fun Counter() {
-    var foregroundColor by remember { mutableStateOf(Color.Red) }
-    val backgroundColor by produceState(Color.White) {
-        delay(1000L)
-        foregroundColor.let {
-            value = Color(0.1f, it.red, it.green, it.blue)
+    val coroutineScope = rememberCoroutineScope()
+    var count by remember { mutableIntStateOf(0) }
+    val onClick: () -> Unit = {
+        coroutineScope.launch {
+            delay(3000)
+            count++
         }
+    }
+    Button(onClick = onClick) {
+        Text("$count")
     }
 }
 
